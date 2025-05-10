@@ -50,11 +50,70 @@ The database consists of four main tables:
 
 ### Database Schema
 
+#### Users Table
 ```sql
-CREATE TABLE users ( ... );
-CREATE TABLE authors ( ... );
-CREATE TABLE books ( ... );
-CREATE TABLE borrowings ( ... );
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  full_name VARCHAR(100),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+```
+
+#### Authors Table
+```sql
+CREATE TABLE authors (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  birth_date DATE,
+  death_date DATE,
+  biography TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+```
+
+#### Books Table
+```sql
+CREATE TABLE books (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  author_id INT,
+  isbn VARCHAR(20),
+  publication_year INT,
+  publisher VARCHAR(100),
+  genre VARCHAR(50),
+  description TEXT,
+  page_count INT,
+  language VARCHAR(50),
+  available BOOLEAN DEFAULT TRUE,
+  user_id INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (author_id) REFERENCES authors(id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+```
+
+#### Borrowings Table
+```sql
+CREATE TABLE borrowings (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  book_id INT NOT NULL,
+  borrower_name VARCHAR(100) NOT NULL,
+  borrowed_date DATE NOT NULL,
+  due_date DATE NOT NULL,
+  returned_date DATE,
+  notes TEXT,
+  user_id INT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (book_id) REFERENCES books(id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
 ```
 
 ## 🔌 API Endpoints
