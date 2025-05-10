@@ -1,56 +1,34 @@
-# Personal Library Management API
-
-A RESTful API built with Node.js, Express, MySQL, and JWT authentication for managing your personal book collection.
+# Personal Library System
 
 
 ## 📚 Project Overview
 
-This project implements a comprehensive personal library management system where users can:
+The Personal Library System is a browser-based web application for managing personal book collections. Built with PHP and MySQL, this system features a responsive Bootstrap interface that allows users to catalog books, maintain author information, and track borrowing records. The application provides secure user authentication and comprehensive CRUD operations, enabling efficient library management through any web browser.
 
-- Register, log in, and authenticate securely using JWT
-- Manage authors and books in their library collection
-- Track borrowing records including loans, due dates, and returns
+## ✨ Features
+
+- **User Authentication** - Secure registration, login, and session management
+- **Book Management** - Add, view, edit, and delete books with detailed information
+- **Author Management** - Maintain author profiles with biographical information
+- **Borrowing Tracker** - Record book loans, due dates, and returns
+- **Search & Filter** - Quickly locate books and authors by keywords
+- **Pagination** - Navigate through large collections with ease
+- **Responsive Design** - Mobile-friendly interface that works on any device
 
 ## 🛠️ Technologies Used
 
-- **Node.js** - Backend JavaScript runtime environment
-- **Express** - Web framework for building RESTful APIs
-- **MySQL** - Relational database for data storage
-- **JWT** - JSON Web Tokens for secure authentication
-- **bcryptjs** - Password hashing and comparison
-- **dotenv** - Environment variable management
+- **PHP** - Core server-side programming
+- **MySQL** - Relational database system
+- **HTML5 & CSS3** - Markup and styling
+- **Bootstrap 5** - Responsive UI framework
+- **JavaScript (ES6)** - Enhanced interactivity
+- **Apache/Nginx** - HTTP server environment
 
-## 📂 Project Structure
+## 💾 Database Schema
 
-```
-personal-library-api/
-  ├── node_modules/           # Project dependencies
-  ├── src/
-  │   ├── config/             # Configuration files (DB, JWT, etc.)
-  │   ├── controllers/        # Controllers for handling API requests
-  │   ├── middleware/         # Middleware (e.g., JWT authentication)
-  │   ├── models/             # Database models for each entity
-  │   ├── routes/             # API route definitions
-  │   └── server.js           # Main entry point of the API
-  ├── .env                    # Environment variables
-  ├── package.json            # Project metadata and dependencies
-  └── README.md               # Project overview and instructions
-```
+The application uses four interconnected tables for data management:
 
-## 💾 Database Design
-
-The database consists of four main tables:
-
-| Table | Description |
-|-------|-------------|
-| **Users** | Stores user credentials and profile information |
-| **Authors** | Contains author details (name, biography, dates) |
-| **Books** | Stores book information linked to authors and users |
-| **Borrowings** | Tracks book loans with borrower info and dates |
-
-### Database Schema
-
-#### Users Table
+### Users Table
 ```sql
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -63,7 +41,7 @@ CREATE TABLE users (
 );
 ```
 
-#### Authors Table
+### Authors Table
 ```sql
 CREATE TABLE authors (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -76,7 +54,7 @@ CREATE TABLE authors (
 );
 ```
 
-#### Books Table
+### Books Table
 ```sql
 CREATE TABLE books (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -98,7 +76,7 @@ CREATE TABLE books (
 );
 ```
 
-#### Borrowings Table
+### Borrowings Table
 ```sql
 CREATE TABLE borrowings (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -116,113 +94,112 @@ CREATE TABLE borrowings (
 );
 ```
 
-## 🔌 API Endpoints
+## 📂 Project Structure
 
-### Authentication
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/login` - User login
+```
+personal-library-system/
+  ├── index.php                # Main entry point
+  ├── assets/                  # Static resources
+  │   ├── css/                 # Stylesheets
+  │   ├── js/                  # JavaScript files
+  │   └── images/              # Images and icons
+  ├── includes/                # Common components
+  │   ├── config.php           # Configuration settings
+  │   ├── db.php               # Database connection
+  │   ├── header.php           # Common header
+  │   ├── footer.php           # Common footer
+  │   └── auth_check.php       # Authentication verification
+  ├── auth/                    # Authentication pages
+  │   ├── login.php            # User login
+  │   ├── register.php         # User registration
+  │   └── logout.php           # Logout handler
+  ├── books/                   # Book management
+  │   ├── list.php             # Book listing
+  │   ├── add.php              # Add new book
+  │   ├── edit.php             # Edit book details
+  │   ├── view.php             # Book details view
+  │   └── delete.php           # Delete book handler
+  ├── authors/                 # Author management
+  │   ├── list.php             # Author listing
+  │   ├── add.php              # Add new author
+  │   ├── edit.php             # Edit author info
+  │   └── delete.php           # Delete author handler
+  ├── borrowings/              # Borrowing management
+  │   ├── list.php             # Borrowings list
+  │   ├── add.php              # New borrowing record
+  │   ├── return.php           # Return book handler
+  │   └── delete.php           # Delete borrowing record
+  └── users/                   # User profile management
+      └── profile.php          # User profile page
+```
 
-### Users
-- `GET /api/users/profile` - Get user profile details
-- `PUT /api/users/profile` - Update user profile
+## 🚀 Implementation Highlights
 
-### Authors
-- `GET /api/authors` - Get all authors
-- `POST /api/authors` - Add a new author
-- `PUT /api/authors/:id` - Update author details
-- `DELETE /api/authors/:id` - Delete an author
+The development followed a structured approach:
 
-### Books
-- `GET /api/books` - Get all books
-- `POST /api/books` - Add a new book
-- `PUT /api/books/:id` - Update book details
-- `DELETE /api/books/:id` - Delete a book
+1. **Requirement Analysis** - Defined core features and user stories
+2. **Database Design** - Created relational schema with foreign key relationships
+3. **Project Structure** - Organized files for separation of concerns
+4. **Authentication System** - Implemented secure user registration and login
+5. **Core CRUD Features** - Built management interfaces for books, authors, and borrowings
+6. **Bootstrap UI** - Created responsive, mobile-friendly interface
+7. **Security Measures** - Applied input validation, prepared statements, and password hashing
+8. **Pagination & Search** - Added filters and page navigation for improved usability
 
-### Borrowings
-- `GET /api/borrowings` - Get all borrowings
-- `POST /api/borrowings` - Add a new borrowing record
-- `PUT /api/borrowings/:id` - Update borrowing details
-- `DELETE /api/borrowings/:id` - Delete a borrowing record
+## 🛡️ Security Features
 
-## 🔐 JWT Authentication
-
-- **Register**: Passwords are securely hashed before storage
-- **Login**: JWT tokens are generated upon successful authentication
-- **Middleware**: Protects routes by validating JWT tokens
-
-## 🚀 Implementation Process
-
-1. **Project Setup**
-   - Initialized Node.js project
-   - Installed dependencies (Express, MySQL2, bcryptjs, jsonwebtoken, dotenv)
-
-2. **Database Configuration**
-   - Set up MySQL connection pool
-   - Created necessary database tables
-
-3. **Authentication System**
-   - Implemented user registration and login
-   - Created JWT middleware for protected routes
-
-4. **API Development**
-   - Built RESTful endpoints for all entities
-   - Implemented CRUD operations with proper validation
-
-5. **Testing and Refinement**
-   - Tested endpoints with Postman
-   - Added error handling and edge case protection
-
-## 🧩 Challenges and Solutions
-
-| Challenge | Solution |
-|-----------|----------|
-| **Database Connection Issues** | Switched to MySQL X DevAPI for correct port configuration |
-| **JWT Implementation** | Added token expiration handling and middleware protection |
-| **Error Handling** | Implemented comprehensive error middleware for clear user feedback |
+- Password hashing using PHP's `password_hash()`
+- Prepared statements to prevent SQL injection
+- Input validation on all forms
+- XSS protection with `htmlspecialchars()`
+- Session security with regenerated IDs
+- Access control for authenticated users
 
 ## ⚙️ Setup Instructions
 
 ### Prerequisites
-- Node.js
-- MySQL
+- PHP 7.4+
+- MySQL 5.7+
+- Apache/Nginx web server
 
-### Installation Steps
+### Installation
 
-1. **Clone the repository**
+1. **Set up environment**
+   - Install XAMPP, MAMP, or equivalent PHP/MySQL environment
+
+2. **Get the code**
    ```bash
-   git clone https://github.com/your-username/personal-library-api.git
-   cd personal-library-api
+   git clone https://github.com/your-username/personal-library-system.git
    ```
 
-2. **Install dependencies**
-   ```bash
-   npm install
+3. **Create database**
+   - Create a new MySQL database named `personal_library`
+   - Import the SQL schema (or create tables using the SQL provided above)
+
+4. **Configure the application**
+   - Edit `includes/config.php` with your database credentials:
+   ```php
+   define('DB_HOST', 'localhost');
+   define('DB_USER', 'root');
+   define('DB_PASS', 'your_password');
+   define('DB_NAME', 'personal_library');
    ```
 
-3. **Configure environment variables**
-   Create a `.env` file in the root directory:
-   ```
-   DB_HOST=localhost
-   DB_USER=root
-   DB_PASSWORD=your_password
-   DB_NAME=personal_library
-   JWT_SECRET=your_jwt_secret_key
-   JWT_EXPIRES_IN=24h
-   PORT=3000
-   ```
+5. **Launch the application**
+   - Access via browser: `http://localhost/personal-library-system/`
+   - Register a new user account
+   - Start managing your library!
 
-4. **Start the server**
-   ```bash
-   npm run dev
-   ```
+## 💡 Key Challenges & Solutions
 
-5. **Test the API**
-   Use Postman or any API testing tool to interact with the endpoints
+| Challenge | Solution |
+|-----------|----------|
+| **Relational Integrity** | Foreign key constraints and cascading rules |
+| **User Authentication** | Centralized session management |
+| **Data Security** | Input validation and output sanitization |
+| **Search with Pagination** | Dynamic SQL queries with parameter retention |
+| **Mobile Responsiveness** | Bootstrap responsive classes and media queries |
 
-## 📝 Conclusion
-
-This project demonstrates the implementation of a RESTful API using Node.js, Express, MySQL, and JWT authentication. It showcases practical solutions for user authentication, relational data management, and error handling.
-
-## 📄 License
+## 📋 License
 
 [MIT](LICENSE)
