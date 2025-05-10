@@ -5,6 +5,46 @@
 
 The Personal Library System is a browser-based web application for managing personal book collections. Built with PHP and MySQL, this system features a responsive Bootstrap interface that allows users to catalog books, maintain author information, and track borrowing records. The application provides secure user authentication and comprehensive CRUD operations, enabling efficient library management through any web browser.
 
+
+## 📂 Project Structure
+
+```
+personal-library-system/
+  ├── index.php                # Main entry point
+  ├── assets/                  # Static resources
+  │   ├── css/                 # Stylesheets
+  │   ├── js/                  # JavaScript files
+  │   └── images/              # Images and icons
+  ├── includes/                # Common components
+  │   ├── config.php           # Configuration settings
+  │   ├── db.php               # Database connection
+  │   ├── header.php           # Common header
+  │   ├── footer.php           # Common footer
+  │   └── auth_check.php       # Authentication verification
+  ├── auth/                    # Authentication pages
+  │   ├── login.php            # User login
+  │   ├── register.php         # User registration
+  │   └── logout.php           # Logout handler
+  ├── books/                   # Book management
+  │   ├── list.php             # Book listing
+  │   ├── add.php              # Add new book
+  │   ├── edit.php             # Edit book details
+  │   ├── view.php             # Book details view
+  │   └── delete.php           # Delete book handler
+  ├── authors/                 # Author management
+  │   ├── list.php             # Author listing
+  │   ├── add.php              # Add new author
+  │   ├── edit.php             # Edit author info
+  │   └── delete.php           # Delete author handler
+  ├── borrowings/              # Borrowing management
+  │   ├── list.php             # Borrowings list
+  │   ├── add.php              # New borrowing record
+  │   ├── return.php           # Return book handler
+  │   └── delete.php           # Delete borrowing record
+  └── users/                   # User profile management
+      └── profile.php          # User profile page
+```
+
 ## ✨ Features
 
 - **User Authentication** - Secure registration, login, and session management
@@ -94,44 +134,6 @@ CREATE TABLE borrowings (
 );
 ```
 
-## 📂 Project Structure
-
-```
-personal-library-system/
-  ├── index.php                # Main entry point
-  ├── assets/                  # Static resources
-  │   ├── css/                 # Stylesheets
-  │   ├── js/                  # JavaScript files
-  │   └── images/              # Images and icons
-  ├── includes/                # Common components
-  │   ├── config.php           # Configuration settings
-  │   ├── db.php               # Database connection
-  │   ├── header.php           # Common header
-  │   ├── footer.php           # Common footer
-  │   └── auth_check.php       # Authentication verification
-  ├── auth/                    # Authentication pages
-  │   ├── login.php            # User login
-  │   ├── register.php         # User registration
-  │   └── logout.php           # Logout handler
-  ├── books/                   # Book management
-  │   ├── list.php             # Book listing
-  │   ├── add.php              # Add new book
-  │   ├── edit.php             # Edit book details
-  │   ├── view.php             # Book details view
-  │   └── delete.php           # Delete book handler
-  ├── authors/                 # Author management
-  │   ├── list.php             # Author listing
-  │   ├── add.php              # Add new author
-  │   ├── edit.php             # Edit author info
-  │   └── delete.php           # Delete author handler
-  ├── borrowings/              # Borrowing management
-  │   ├── list.php             # Borrowings list
-  │   ├── add.php              # New borrowing record
-  │   ├── return.php           # Return book handler
-  │   └── delete.php           # Delete borrowing record
-  └── users/                   # User profile management
-      └── profile.php          # User profile page
-```
 
 ## 🚀 Implementation Highlights
 
