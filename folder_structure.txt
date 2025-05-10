@@ -1,0 +1,36 @@
+Folder PATH listing
+Volume serial number is 4E57-E14A
+C:.
+│   folder_structure.txt
+│   index.php
+│   test.php
+│   
+├───assets
+│   ├───css
+│   │       style.css
+│   │       
+│   └───js
+│           script.js
+│           
+├───auth
+│       login.php
+│       logout.php
+│       register.php
+│       
+├───authors
+│       add.php
+│       delete.php
+│       edit.php
+│       index.php
+│       view.php
+│       
+├───books
+├───borrowings
+├───includes
+│       config.php
+│       db.php
+│       footer.php
+│       functions.php
+│       header.php
+│       
+└───users

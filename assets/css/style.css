@@ -1,0 +1,89 @@
+/* style.css */
+
+/* 全局样式 */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}
+
+/* 卡片样式 */
+.card {
+    transition: transform 0.3s;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 书籍卡片样式 */
+.book-card {
+    height: 100%;
+}
+
+.book-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* 作者卡片样式 */
+.author-card {
+    height: 100%;
+}
+
+/* 表单样式 */
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 详情页样式 */
+.book-details .book-cover {
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+/* 登录和注册表单 */
+.auth-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 状态标签 */
+.status-available {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-borrowed {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* 分页样式 */
+.pagination {
+    margin-top: 20px;
+}
+
+/* 表格样式 */
+.table-container {
+    overflow-x: auto;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .book-card .card-img-top {
+        height: 150px;
+    }
+}
